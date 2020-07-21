@@ -15,9 +15,10 @@ public class UserDaoTest {
 
         //第二部：执行SQL
         //方式1：getMapper
-        UserMapper userMapper = sqlSession.getMapper(UserMapper.class);
-        List<User> userList = userMapper.getUserList();
+//        UserMapper userMapper = sqlSession.getMapper(UserMapper.class);
+//        List<User> userList = userMapper.getUserList();
         //方式2：
+        List<User> userList = sqlSession.selectList("com.melodyhub.dao.UserMapper.getUserList");
 
         //遍历结果集
         for (User user : userList) {
