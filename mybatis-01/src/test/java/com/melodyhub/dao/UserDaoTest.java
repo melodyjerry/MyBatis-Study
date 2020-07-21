@@ -14,11 +14,11 @@ public class UserDaoTest {
         SqlSession sqlSession = MyBatisUtils.getSqlSession();
 
         //第二部：执行SQL
-        //方式1：getMapper
-//        UserMapper userMapper = sqlSession.getMapper(UserMapper.class);
-//        List<User> userList = userMapper.getUserList();
-        //方式2：
-        List<User> userList = sqlSession.selectList("com.melodyhub.dao.UserMapper.getUserList");
+        //方式1：getMapper，安全性更好
+        UserMapper userMapper = sqlSession.getMapper(UserMapper.class);
+        List<User> userList = userMapper.getUserList();
+        //方式2：不推荐使用，安全性比方式1差
+        //List<User> userList = sqlSession.selectList("com.melodyhub.dao.UserMapper.getUserList");
 
         //遍历结果集
         for (User user : userList) {
